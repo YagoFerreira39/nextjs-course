@@ -1,13 +1,14 @@
 import Link from "next/link"
+import Layout from "../components/Layout"
 
 function AboutPage() {
   return (
-    <div>
+    <Layout title={"About musical events"}>
       <h1>About</h1>
       <p>This is an app to find the latest musical events</p>
       <p>Version: 1.0.0</p>
       <Link href={"/"}>Home</Link>
-    </div>
+    </Layout>
   )
 }
 
