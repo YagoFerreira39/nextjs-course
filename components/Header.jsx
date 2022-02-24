@@ -13,7 +13,7 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link href={"/"}>
+            <Link href={"/events"}>
               <a>Slasher Events</a>
             </Link>
           </li>

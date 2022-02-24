@@ -1,11 +1,33 @@
-import Layout from "../../components/Layout"
+import Link from "next/link"
+import Layout from "@/components/Layout"
+import { API_URL } from "../../config"
+import EventItem from "@/components/EventItem"
 
-const index = () => {
+export default function HomePage({ events }) {
   return (
     <Layout>
-      <div>index</div>
+      <h1>Upcoming Events</h1>
+      {events?.length === 0 &&
+        (<h3>{`No events to shows`}</h3>)
+      }
+
+      {events.length > 0 &&
+        events.map(evt => <EventItem key={evt.id} evt={evt} />)
+      }
+      <Link href={"/about"}>About</Link>
     </Layout>
   )
 }
 
-export default index
+
+export async function getStaticProps() {
+  const res = await fetch(`${API_URL}/api/events`)
+  const events = await res.json()
+
+  return {
+    props: {
+      events
+    },
+    revalidate: 1
+  }
+}
